@@ -1,0 +1,41 @@
+{
+  "name":             "pattern-lab/plugin-data-inheritance",
+  "description":      "Data inheritance based on pattern lineage for Pattern Lab.",
+  "keywords":         ["data", "inheritance", "lineage", "pattern lab"],
+  "homepage":         "http://patternlab.io",
+  "license":          "MIT",
+  "type":             "patternlab-plugin",
+  "authors": [
+    {
+      "name":         "Dave Olsen",
+      "email":        "dmolsen@gmail.com",
+      "homepage":     "http://dmolsen.com",
+      "role":         "Lead Developer"
+    }
+  ],
+  "support": {
+    "issues":         "https://github.com/pattern-lab/plugin-php-data-inheritance/issues",
+    "wiki":           "http://patternlab.io/docs/",
+    "source":         "https://github.com/pattern-lab/plugin-php-data-inheritance/releases"
+  },
+  "autoload": {
+    "psr-0": {
+      "PatternLab\\DataInheritance": "src/"
+    }
+  },
+  "require": {
+    "php":              ">=5.4",
+    "pattern-lab/core": "^2.4.0"
+  },
+  "extra": {
+    "patternlab": {
+      "config": {
+        "plugins": {
+          "dataInheritance": {
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
