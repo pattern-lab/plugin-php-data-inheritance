@@ -1,5 +1,5 @@
-![license](https://img.shields.io/github/license/pattern-lab/plugin-php-data-inheritance.svg?maxAge=2592000)
-[![Packagist](https://img.shields.io/packagist/v/pattern-lab/plugin-data-inheritance.svg?maxAge=2592000)](https://packagist.org/packages/pattern-lab/plugin-data-inheritance) [![Gitter](https://img.shields.io/gitter/room/pattern-lab/php.svg?maxAge=2592000)](https://gitter.im/pattern-lab/php)
+![license](https://img.shields.io/github/license/pattern-lab/plugin-php-data-inheritance.svg)
+[![Packagist](https://img.shields.io/packagist/v/pattern-lab/plugin-data-inheritance.svg)](https://packagist.org/packages/pattern-lab/plugin-data-inheritance) [![Gitter](https://img.shields.io/gitter/room/pattern-lab/php.svg)](https://gitter.im/pattern-lab/php)
 
 # Data Inheritance Plugin for Pattern Lab
 
