@@ -1,12 +1,12 @@
 <?php
 
 /*!
- * Faker Listener Class
+ * Data Inheritance Listener Class
  *
  * Copyright (c) 2016 Dave Olsen, http://dmolsen.com
  * Licensed under the MIT license
  *
- * Adds Faker support to Pattern Lab
+ * Allows patterns to inherit data from patterns in their lineage
  *
  */
 
