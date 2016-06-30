@@ -3,10 +3,7 @@
 
 # Data Inheritance Plugin for Pattern Lab
 
-The Data Inheritance Plugin forces patterns to inherit data from their lineage. This allows data in included patterns to bubble
-to the top of the pattern stack. With this plugin pseudo-patterns become first-class citizens.
-
-This is a crap intro. Rewrite it.
+The Data Inheritance Plugin allows patterns to inherit data from patterns within its lineage. This means that data from included patterns is merged with the current pattern. The current pattern's data takes precedence.
 
 ## Installation
 
