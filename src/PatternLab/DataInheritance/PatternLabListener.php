@@ -1,18 +1,19 @@
 <?php
 
 /*!
- * Faker Listener Class
+ * Data Inheritance Listener Class
  *
  * Copyright (c) 2016 Dave Olsen, http://dmolsen.com
  * Licensed under the MIT license
  *
- * Adds Faker support to Pattern Lab
+ * Allows patterns to inherit data from patterns in their lineage
  *
  */
 
 namespace PatternLab\DataInheritance;
 
 use \PatternLab\Config;
+use \PatternLab\Data;
 use \PatternLab\PatternData;
 
 class PatternLabListener extends \PatternLab\Listener {
@@ -28,32 +29,45 @@ class PatternLabListener extends \PatternLab\Listener {
   }
   
   /**
-  * Fake some content. Replace the entire store.
+  * Look up data in lineages, update pattern store data, replace store
   */
   public function inherit() {
     
     if ((bool)Config::getOption("plugins.dataInheritance.enabled")) {
       
-      $store = PatternData::get();
+      $storeData        = Data::get();
+      $storePatternData = PatternData::get();
       
-      foreach ($store as $patternStoreKey => $patternData) {
+      foreach ($storePatternData as $patternStoreKey => $patternData) {
         
-        if (count($patternData["lineages"]) > 0) {
+        if (isset($patternData["lineages"]) && (count($patternData["lineages"]) > 0)) {
           
-          $data = PatternData::getPatternOption($patternStoreKey, "data");
+          $dataLineage = array();
           
           foreach($patternData["lineages"] as $lineage) {
             
-            $lineageData = PatternData::getPatternOption($lineage["lineagePattern"], "data");
-            $data = array_replace_recursive($data, $lineageData);
+            // merge the lineage data with the lineage store. newer/higher-level data is more important.
+            $lineageKey  = $lineage["lineagePattern"];
+            $lineageData = isset($storeData["patternSpecific"][$lineageKey]) && isset($storeData["patternSpecific"][$lineageKey]["data"]) ? $storeData["patternSpecific"][$lineageKey]["data"] : array();
+            if (!empty($lineageData)) {
+              $dataLineage = array_replace_recursive($dataLineage, $lineageData);
+            }
             
           }
           
-          PatternData::setPatternOption($patternStoreKey, "data", $data);
+          // merge the lineage data with the pattern data. pattern data is more important.
+          $dataPattern = isset($storeData["patternSpecific"][$patternStoreKey]) && isset($storeData["patternSpecific"][$patternStoreKey]["data"]) ? $storeData["patternSpecific"][$patternStoreKey]["data"] : array();
+          $dataPattern = array_replace_recursive($dataLineage, $dataPattern);
+          
+          if (!empty($dataPattern)) {
+            $storeData["patternSpecific"][$patternStoreKey]["data"] = $dataPattern;
+          }
           
         }
         
       }
+      
+      Data::replaceStore($storeData);
       
     }
     

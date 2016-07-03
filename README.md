@@ -1,12 +1,9 @@
-![license](https://img.shields.io/github/license/pattern-lab/plugin-php-data-inheritance.svg?maxAge=2592000)
-[![Packagist](https://img.shields.io/packagist/v/pattern-lab/plugin-data-inheritance.svg?maxAge=2592000)](https://packagist.org/packages/pattern-lab/plugin-data-inheritance) [![Gitter](https://img.shields.io/gitter/room/pattern-lab/php.svg?maxAge=2592000)](https://gitter.im/pattern-lab/php)
+![license](https://img.shields.io/github/license/pattern-lab/plugin-php-data-inheritance.svg)
+[![Packagist](https://img.shields.io/packagist/v/pattern-lab/plugin-data-inheritance.svg)](https://packagist.org/packages/pattern-lab/plugin-data-inheritance) [![Gitter](https://img.shields.io/gitter/room/pattern-lab/php.svg)](https://gitter.im/pattern-lab/php)
 
 # Data Inheritance Plugin for Pattern Lab
 
-The Data Inheritance Plugin forces patterns to inherit data from their lineage. This allows data in included patterns to bubble
-to the top of the pattern stack. With this plugin pseudo-patterns become first-class citizens.
-
-This is a crap intro. Rewrite it.
+The Data Inheritance Plugin allows patterns to inherit data from patterns within its lineage. This means that data from included patterns is merged with the current pattern. The current pattern's data takes precedence.
 
 ## Installation
 
