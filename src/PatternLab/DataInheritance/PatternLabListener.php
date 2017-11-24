@@ -34,27 +34,38 @@ class PatternLabListener extends \PatternLab\Listener {
   public function inherit() {
     
     if ((bool)Config::getOption("plugins.dataInheritance.enabled")) {
-      
+
+      $pluginDefault = (bool)Config::getOption("plugins.dataInheritance.default");
       $storeData        = Data::get();
       $storePatternData = PatternData::get();
       
       foreach ($storePatternData as $patternStoreKey => $patternData) {
-        
-        if (isset($patternData["lineages"]) && (count($patternData["lineages"]) > 0)) {
+  
+        if (isset($patternData["lineages"])
+          && is_array($patternData["lineages"])
+          && (count($patternData["lineages"]) > 0)
+        ) {
           
           $dataLineage = array();
-          
+
           foreach($patternData["lineages"] as $lineage) {
             
             // merge the lineage data with the lineage store. newer/higher-level data is more important.
             $lineageKey  = $lineage["lineagePattern"];
-            $lineageData = isset($storeData["patternSpecific"][$lineageKey]) && isset($storeData["patternSpecific"][$lineageKey]["data"]) ? $storeData["patternSpecific"][$lineageKey]["data"] : array();
+            $lineageDataInheritance = isset($storeData["patternSpecific"][$lineageKey]["data"]["data-inheritance"])
+              ? (bool)$storeData["patternSpecific"][$lineageKey]["data"]["data-inheritance"]
+              : $pluginDefault;
+            $lineageData = $lineageDataInheritance
+              && isset($storeData["patternSpecific"][$lineageKey])
+              && isset($storeData["patternSpecific"][$lineageKey]["data"])
+              ? $storeData["patternSpecific"][$lineageKey]["data"]
+              : array();
             if (!empty($lineageData)) {
               $dataLineage = array_replace_recursive($dataLineage, $lineageData);
             }
             
           }
-          
+
           // merge the lineage data with the pattern data. pattern data is more important.
           $dataPattern = isset($storeData["patternSpecific"][$patternStoreKey]) && isset($storeData["patternSpecific"][$patternStoreKey]["data"]) ? $storeData["patternSpecific"][$patternStoreKey]["data"] : array();
           $dataPattern = array_replace_recursive($dataLineage, $dataPattern);
@@ -64,7 +75,7 @@ class PatternLabListener extends \PatternLab\Listener {
           }
           
         }
-        
+
       }
       
       Data::replaceStore($storeData);

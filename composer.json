@@ -32,7 +32,8 @@
       "config": {
         "plugins": {
           "dataInheritance": {
-            "enabled": true
+            "enabled": true,
+            "default": true
           }
         }
       }
