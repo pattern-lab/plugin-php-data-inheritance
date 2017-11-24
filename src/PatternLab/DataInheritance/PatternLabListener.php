@@ -40,7 +40,10 @@ class PatternLabListener extends \PatternLab\Listener {
       
       foreach ($storePatternData as $patternStoreKey => $patternData) {
         
-        if (isset($patternData["lineages"]) && (count($patternData["lineages"]) > 0)) {
+        if (isset($patternData["lineages"])
+          && is_array($patternData["lineages"])
+          && (count($patternData["lineages"]) > 0)
+        ) {
           
           $dataLineage = array();
           
