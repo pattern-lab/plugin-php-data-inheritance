@@ -1,5 +1,5 @@
 {
-  "name":             "pattern-lab/plugin-data-inheritance",
+  "name":             "bgilhome/plugin-data-inheritance",
   "description":      "Data inheritance based on pattern lineage for Pattern Lab.",
   "keywords":         ["data", "inheritance", "lineage", "pattern lab"],
   "homepage":         "http://patternlab.io",
