@@ -22,6 +22,6 @@ After install make sure to generate your site again with:
 
 ## Disabling the Plugin
 
-To disable the Faker plugin you can either directly edit `./config/config.yml` or use the command line option:
+To disable the Data Inheritance plugin you can either directly edit `./config/config.yml` or use the command line option:
 
     php core/console --config --set plugins.dataInheritance.enabled=false
