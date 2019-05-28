@@ -3,7 +3,7 @@
 
 # Data Inheritance Plugin for Pattern Lab
 
-The Data Inheritance Plugin allows patterns to inherit data from patterns within its lineage. This means that data from included patterns is merged with the current pattern. The current pattern's data takes precedence.
+The Data Inheritance Plugin allows patterns to inherit data from patterns within its lineage and sub-lineage recursively. This means that data from included patterns is merged with the current pattern. The current pattern's data takes precedence.
 
 ## Installation
 
